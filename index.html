@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Pacientes - Sincronizado con GitHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏥 Gestor de Pacientes</h1>
+                <p>Sistema profesional de gestión con sincronización GitHub</p>
+            </div>
+            <div class="github-sync">
+                <button id="btnSync" class="btn-sync">🔄 Sincronizar GitHub</button>
+                <span id="statusSync" class="status-sync"></span>
+            </div>
+        </header>
+
+        <!-- Formulario de Configuración GitHub -->
+        <section class="github-config" id="githubConfig" style="display: none;">
+            <h3>Configuración de GitHub</h3>
+            <div class="form-group">
+                <label>Token Personal de GitHub (PAT):</label>
+                <input type="password" id="githubToken" placeholder="ghp_..." />
+            </div>
+            <div class="form-group">
+                <label>Usuario GitHub:</label>
+                <input type="text" id="githubUser" placeholder="tu-usuario" />
+            </div>
+            <div class="form-group">
+                <label>Nombre del Repositorio:</label>
+                <input type="text" id="githubRepo" value="gestor-pacientes" />
+            </div>
+            <button onclick="guardarConfigGitHub()" class="btn btn-primary">Guardar Configuración</button>
+            <button onclick="ocultarConfig()" class="btn btn-secondary">Cancelar</button>
+        </section>
+
+        <!-- Señal de Configuración -->
+        <div class="alert alert-info" style="display: none;" id="alertConfig">
+            <strong>⚙️ Configuración Requerida:</strong> Configura tu token de GitHub para sincronizar datos.
+            <button onclick="mostrarConfig()" class="btn-link">Configurar Ahora</button>
+        </div>
+
+        <div class="content">
+            <!-- Sección de Búsqueda -->
+            <section class="search-section">
+                <h2>🔍 Búsqueda de Pacientes</h2>
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Busca por código, nombre o apellido..."
+                    />
+                    <select id="tipoSearch" class="search-select">
+                        <option value="todos">Todos</option>
+                        <option value="codigo">Código</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="apellido">Apellido</option>
+                    </select>
+                </div>
+                <div id="resultadosBusqueda" class="search-results"></div>
+            </section>
+
+            <div class="two-columns">
+                <!-- Formulario de Registro -->
+                <section class="form-section">
+                    <h2>➕ Nuevo Paciente</h2>
+                    <form id="formPaciente" class="form-paciente">
+                        <div class="form-group">
+                            <label>Código de Paciente:</label>
+                            <input type="text" id="codigo" placeholder="P-001" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" id="nombre" placeholder="Juan" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido:</label>
+                            <input type="text" id="apellido" placeholder="Pérez" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="email" placeholder="correo@ejemplo.com" />
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <input type="tel" id="telefono" placeholder="+51 9 XXXX XXXX" />
+                        </div>
+                        <div class="form-group">
+                            <label>Diagnóstico Clínico:</label>
+                            <textarea id="diagnostico" placeholder="Describe el diagnóstico..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Tratamiento:</label>
+                            <select id="tratamiento">
+                                <option>Ortodoncia Fija</option>
+                                <option>Ortodoncia Removible</option>
+                                <option>Profilaxis</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Estado:</label>
+                            <select id="estado">
+                                <option>Activo</option>
+                                <option>Inactivo</option>
+                                <option>Completado</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Paciente</button>
+                    </form>
+                </section>
+
+                <!-- Estadísticas -->
+                <section class="stats-section">
+                    <h2>📊 Estadísticas</h2>
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <h3 id="totalPacientes">0</h3>
+                            <p>Pacientes Totales</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="pacientesActivos">0</h3>
+                            <p>Pacientes Activos</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="pacientesCompletados">0</h3>
+                            <p>Tratamientos Completados</p>
+                        </div>
+                    </div>
+                    <div class="buttons-export">
+                        <button onclick="exportarJSON()" class="btn btn-secondary">📥 Exportar JSON</button>
+                        <button onclick="importarJSON()" class="btn btn-secondary">📤 Importar JSON</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Lista de Pacientes -->
+            <section class="patients-section">
+                <h2>👥 Lista de Pacientes</h2>
+                <div id="listaPacientes" class="patients-list">
+                    <p class="empty-message">No hay pacientes registrados</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Input oculto para importar -->
+    <input type="file" id="fileInput" style="display: none;" accept=".json" />
+
+    <script src="script.js"></script>
+</body>
+</html>
