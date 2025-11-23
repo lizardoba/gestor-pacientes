@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "codigo": "Jdjjd",
+    "nombre": "Hdjd",
+    "apellido": "Hdjjd",
+    "email": "",
+    "telefono": "",
+    "diagnostico": "",
+    "tratamiento": "Ortodoncia Fija",
+    "estado": "Activo",
+    "fechaCreacion": "2025-11-23T02:43:04.086Z"
+  }
+]
