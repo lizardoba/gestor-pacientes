@@ -1,0 +1,485 @@
+/* VARIABLES Y ESTILOS GLOBALES */
+:root {
+    --color-primary: #0066cc;
+    --color-secondary: #17a2b8;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-light: #f8f9fa;
+    --color-dark: #343a40;
+    --border-radius: 8px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--color-dark);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-content h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.header-content p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* BOTÓN DE SINCRONIZACIÓN */
+.github-sync {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-sync {
+    background: white;
+    color: var(--color-primary);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-sync:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-sync:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status-sync {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+/* ALERTAS Y CONFIGURACIÓN */
+.alert {
+    padding: 15px 20px;
+    margin: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+.github-config {
+    background: var(--color-light);
+    padding: 20px;
+    margin: 20px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-primary);
+}
+
+.github-config h3 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+/* CONTENIDO */
+.content {
+    padding: 30px;
+}
+
+/* FORMULARIOS */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* BOTONES */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background: var(--color-light);
+    color: var(--color-dark);
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background: #e2e6ea;
+}
+
+.btn-danger {
+    background: var(--color-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-weight: bold;
+}
+
+/* SECCIÓN DE BÚSQUEDA */
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+}
+
+.search-select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    min-width: 150px;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.search-result-card {
+    background: var(--color-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* LAYOUT EN COLUMNAS */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FORMULARIO DE PACIENTES */
+.form-section {
+    background: var(--color-light);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+}
+
+.form-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.form-paciente {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ESTADÍSTICAS */
+.stats-section {
+    background: var(--color-light);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+}
+
+.stats-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border-left: 4px solid var(--color-secondary);
+    box-shadow: var(--shadow);
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.buttons-export {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons-export .btn {
+    flex: 1;
+}
+
+/* LISTA DE PACIENTES */
+.patients-section {
+    margin-top: 30px;
+}
+
+.patients-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.patients-list {
+    display: grid;
+    gap: 20px;
+}
+
+.patient-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.patient-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.patient-header h3 {
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.estado-activo {
+    background: #d4edda;
+    color: #155724;
+}
+
+.estado-inactivo {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.estado-completado {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.patient-info {
+    background: var(--color-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.patient-info p {
+    margin-bottom: 8px;
+}
+
+.patient-info p:last-child {
+    margin-bottom: 0;
+}
+
+.patient-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.patient-actions .btn {
+    flex: 1;
+}
+
+/* MENSAJE VACÍO */
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+    font-size: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-select {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .patient-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .patient-actions {
+        flex-direction: column;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+}
