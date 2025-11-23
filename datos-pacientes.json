@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "codigo": "3463",
+    "nombre": "pedro velaez",
+    "apellido": "caracol",
+    "email": "",
+    "telefono": "",
+    "diagnostico": "",
+    "tratamiento": "Ortodoncia Fija",
+    "estado": "Activo",
+    "fechaCreacion": "2025-11-23T02:38:12.024Z"
+  }
+]
