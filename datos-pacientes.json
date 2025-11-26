@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "codigo": "001",
+    "nombre": "Marco ",
+    "apellido": "Peña flores",
+    "email": "lizardobarzolaa@gmail.com",
+    "telefono": "+51924603889",
+    "diagnostico": "",
+    "tratamiento": "Otro",
+    "estado": "Activo",
+    "fechaCreacion": "2025-11-26T10:37:01.614Z"
+  }
+]
