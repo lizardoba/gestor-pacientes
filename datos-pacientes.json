@@ -9,5 +9,16 @@
     "tratamiento": "Otro",
     "estado": "Activo",
     "fechaCreacion": "2025-11-26T10:37:01.614Z"
+  },
+  {
+    "codigo": "254",
+    "nombre": "Esteban",
+    "apellido": "Odar",
+    "email": "yovichssal@gmail.com",
+    "telefono": "999727221",
+    "diagnostico": "Maloclusión clase lll",
+    "tratamiento": "Ortodoncia Removible",
+    "estado": "Inactivo",
+    "fechaCreacion": "2025-11-26T10:38:32.773Z"
   }
 ]
